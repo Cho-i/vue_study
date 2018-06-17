@@ -312,3 +312,93 @@ var vm = new Vue({
   <!-- vm.currentView가 변경되면 컴포넌트가 변경됩니다! -->
 </component>
 ```
+# 6. 기타
+
+## 자식 컴포넌트 참조
+
+props나 이벤트가 있었음에도 불구하고 때때로 JavaScript로 하위 컴포넌트에 직접 액세스 해야 할 수도 있습니다. 이를 위해 `ref` 를 이용하여 참조 컴포넌트 ID를 자식 컴포넌트에 할당해야 합니다. 예: 
+
+```html
+<div id="parent">
+  <user-profile ref="profile"></user-profile>
+</div>
+```
+
+```javascript
+var parent = new Vue({ el: '#parent' })
+// 자식 컴포넌트 인스턴스에 접근합니다.
+var child = parent.$refs.profile
+```
+
+## 루트 인스턴스 접근
+
+```javascript
+// Vue 根实例
+new Vue({
+  data: {
+    foo: 1
+  },
+  computed: {
+    bar: function () { /* ... */ }
+  },
+  methods: {
+    baz: function () { /* ... */ }
+  }
+})
+```
+
+```javascript
+// 루트 컴포넌트의 값 가져오기
+this.$root.foo
+
+// 루트 컴포넌트 값 엎어쓰기
+this.$root.foo = 2
+
+// 루트 컴포넌트 계산 된 값 가져오기
+this.$root.bar
+
+// 루트 컴포넌트 함수 실행
+this.$root.baz()
+```
+
+## parent 컴포넌트 접근
+
+~~~ 
+$parent
+~~~
+
+## child 컴포넌트 인스턴스 혹은 속성 접근
+
+ref 특성으로 component에 이름을 지어줍니다.
+
+```html
+<base-input ref="usernameInput"></base-input>
+```
+
+다음 코드로 인스턴스를 접근할 수 있습니다.
+
+```javascript
+this.$refs.usernameInput
+```
+
+부모 컴포넌트에서 자식 컴포넌트의 input을 focus하려고 한다면
+
+```html
+<input ref="input">
+```
+
+로 정의한 다음, 부모 컴포넌트에서 메소드를 정의하여 
+
+```
+methods: {
+  focus: function () {
+    this.$refs.input.focus()
+  }
+}
+```
+
+해당 기능을 구현할 수 있습니다.
+
+```
+this.$refs.usernameInput.focus()
+```
