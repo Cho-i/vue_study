@@ -332,7 +332,7 @@ var child = parent.$refs.profile
 ## 루트 인스턴스 접근
 
 ```javascript
-// Vue 根实例
+// Vue 루트 인스턴스
 new Vue({
   data: {
     foo: 1
