@@ -66,8 +66,6 @@ Vue.component('child', {
 <child message="안녕하세요!"></child>
 ~~~
 
-<https://jsfiddle.net/sognxue77/tfdyxbpa/6/>
-
 ## Prop 검증
 
 컴포넌트가 받는 중인 prop에 대한 요구사항을 지정할 수 있습니다. 요구사항이 충족 되지 않으면 Vue에서 경고를 내보냅니다. 
@@ -219,8 +217,6 @@ new Vue({
   }
 })
 ~~~
-
-<https://jsfiddle.net/sognxue77/eywraw8t/84048/>
 
 ## .sync수식어 (2.3.0+ )
 
